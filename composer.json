@@ -1,0 +1,40 @@
+{
+  "name": "afrittella/laravel-repository",
+  "description": "Custom Repository Pattern for Laravel 5",
+  "require": {
+    "php" : "~5.6|~7.0",
+    "illuminate/support": "^5.4",
+    "laravel/framework": "^5.4",
+    "doctrine/dbal": "^2.5",
+    "illuminate/database": "^5.4"
+  },
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Andrea Frittella",
+      "email": "a.frittella@sintab.it",
+      "role": "Chief Architect & Developer",
+      "homepage": "http://www.andreafrittella.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Afrittella\\LaravelRepository\\": "src/app"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "require-dev": {
+    "mockery/mockery": "0.9.*",
+    "phpunit/phpunit": "~5.7",
+    "fzaninotto/faker": "~1.4",
+    "orchestra/testbench": "^3.4",
+    "orchestra/database": "*",
+    "friendsofphp/php-cs-fixer": "^1.11"
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  }
+}
