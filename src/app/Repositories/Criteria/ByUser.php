@@ -2,7 +2,7 @@
 namespace Afrittella\LaravelRepository\Repositories\Criteria;
 
 use Afrittella\LaravelRepository\Repositories\Criteria\Criteria;
-use Afrittella\LaravelRepository\Contracts\BaseRepository as Repository;
+use Afrittella\LaravelRepository\Contracts\RepositoryInterface as Repository;
 use Illuminate\Support\Facades\Auth;
 
 class ByUser extends Criteria {
