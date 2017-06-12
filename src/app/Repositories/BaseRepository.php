@@ -166,6 +166,12 @@ abstract class BaseRepository implements RepositoryInterface, CriteriaInterface
         return $this->model;
     }
 
+    public function resetModel()
+    {
+        $this->makeModel();
+        return $this;
+    }
+
     public function resetScope()
     {
         $this->skipCriteria(false);
@@ -185,6 +191,7 @@ abstract class BaseRepository implements RepositoryInterface, CriteriaInterface
     public function getByCriteria(Criteria $criteria)
     {
         $this->model = $criteria->apply($this->model, $this);
+        $this->resetModel();
         return $this;
     }
 
@@ -197,6 +204,8 @@ abstract class BaseRepository implements RepositoryInterface, CriteriaInterface
     public function resetCriteria()
     {
         $this->criteria = $this->criteria->reject(true);
+        $this->resetModel();
+        return $this;
     }
 
     public function  applyCriteria()
