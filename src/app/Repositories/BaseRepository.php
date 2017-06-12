@@ -166,12 +166,14 @@ abstract class BaseRepository implements RepositoryInterface, CriteriaInterface
         return $this->model;
     }
 
-    public function resetScope() {
+    public function resetScope()
+    {
         $this->skipCriteria(false);
         return $this;
     }
 
-    public function skipCriteria($status = true){
+    public function skipCriteria($status = true)
+    {
         $this->skipCriteria = $status;
         return $this;
     }
@@ -180,17 +182,25 @@ abstract class BaseRepository implements RepositoryInterface, CriteriaInterface
         return $this->criteria;
     }
 
-    public function getByCriteria(Criteria $criteria) {
+    public function getByCriteria(Criteria $criteria)
+    {
         $this->model = $criteria->apply($this->model, $this);
         return $this;
     }
 
-    public function pushCriteria(Criteria $criteria) {
+    public function pushCriteria(Criteria $criteria)
+    {
         $this->criteria->push($criteria);
         return $this;
     }
 
-    public function  applyCriteria() {
+    public function resetCriteria()
+    {
+        $this->criteria = $this->criteria->reject(true);
+    }
+
+    public function  applyCriteria()
+    {
         if($this->skipCriteria === true)
             return $this;
 
