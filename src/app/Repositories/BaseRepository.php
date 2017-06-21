@@ -190,6 +190,7 @@ abstract class BaseRepository implements RepositoryInterface, CriteriaInterface
 
     public function getByCriteria(Criteria $criteria)
     {
+        $this->resetModel();
         $this->model = $criteria->apply($this->model, $this);
         return $this;
     }
