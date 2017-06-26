@@ -1,4 +1,4 @@
-# Laravel Repository 0.7
+# Laravel Repository 0.7.1
 
 Another repository pattern implementation for Laravel.
 

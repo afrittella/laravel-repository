@@ -2,6 +2,7 @@
 namespace Afrittella\LaravelRepository\Repositories;
 
 use Afrittella\LaravelRepository\Contracts\CriteriaInterface;
+use Afrittella\LaravelRepository\Exceptions\NotDeletedException;
 use Afrittella\LaravelRepository\Exceptions\NotFoundException;
 use Afrittella\LaravelRepository\Exceptions\NotSavedException;
 use Afrittella\LaravelRepository\Exceptions\RepositoryException;
@@ -81,7 +82,7 @@ abstract class BaseRepository implements RepositoryInterface, CriteriaInterface
         }
 
         if (!$model_data->destroy($id)) {
-            throw new NotDeletexception();
+            throw new NotDeletedException();
         }
 
         return true;
