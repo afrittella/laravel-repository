@@ -2,6 +2,7 @@
 namespace Afrittella\LaravelRepository\Repositories;
 
 use Afrittella\LaravelRepository\Contracts\CriteriaInterface;
+use Afrittella\LaravelRepository\Exceptions\NotCreatedException;
 use Afrittella\LaravelRepository\Exceptions\NotDeletedException;
 use Afrittella\LaravelRepository\Exceptions\NotFoundException;
 use Afrittella\LaravelRepository\Exceptions\NotSavedException;
@@ -10,6 +11,7 @@ use Afrittella\LaravelRepository\Repositories\Criteria\Criteria;
 use Afrittella\LaravelRepository\Contracts\RepositoryInterface;
 use Illuminate\Container\Container as App;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Collection;
 
 /***
@@ -55,7 +57,13 @@ abstract class BaseRepository implements RepositoryInterface, CriteriaInterface
 
     public function create(array $data)
     {
-        return $this->model->create($data);
+        try {
+            $data  = $this->model->create($data);
+        } catch(QueryException $e) {
+            throw new NotCreatedException;
+        }
+
+        return $data;
     }
 
     public function update(array $data, $id, $attribute="id")
