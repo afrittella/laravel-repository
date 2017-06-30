@@ -60,7 +60,7 @@ abstract class BaseRepository implements RepositoryInterface, CriteriaInterface
         try {
             $data  = $this->model->create($data);
         } catch(QueryException $e) {
-            throw new NotCreatedException;
+            throw new NotCreatedException();
         }
 
         return $data;
